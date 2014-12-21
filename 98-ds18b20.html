@@ -1,0 +1,32 @@
+<script type="text/javascript">
+    RED.nodes.registerType('ds18b20',{
+        category: "output",
+        color: "#C7E9C0",
+        defaults: {
+            name: {value:""},
+            sensorid: {value:"", required:true}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "temp.png",
+        label: function() {
+            return "DS18B20 " + this.name || "ds18b20";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="ds18b20">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-sensorid"><i class="icon-tag"></i> SensorID</label>
+        <input type="text" id="node-input-sensorid" placeholder="">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="ds18b20">
+    <p>Read a temperature value from a DS18B20 sensor</p>
+</script>
