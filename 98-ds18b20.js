@@ -5,14 +5,26 @@ module.exports = function(RED) {
     function DS18B20Node(config) {
         RED.nodes.createNode(this, config);
         this.sensorid = config.sensorid;
+        // user input is in minutes, this is conversion to miliseconds
+        this.timer = config.timer * 1000 * 60;
         var node = this;
 
-        this.on('input', function(msg) {
-            sense.temperature(this.sensorid, function(err, value) {
-                var tempReading = {reading: value, where: node.name};
-                msg.payload = tempReading;
+        // BUG/TODO selected sensor id not focused when editing a node
+
+        var readSensor = function() {
+            node.log("reading a sensor with id=" + node.sensorid);
+            // TODO error handling
+            sense.temperature(node.sensorid, function(err, value) {
+                //var tempReading = {reading: value, where: node.name};
+                var msg = { payload: value, topic: node.name };
                 node.send(msg);
             });
+        }
+
+        node.tout = setInterval(readSensor, node.timer);
+
+        this.on("close", function() {
+            clearInterval(this.tout);
         });
     }
 

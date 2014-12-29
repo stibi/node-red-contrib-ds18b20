@@ -1,12 +1,13 @@
 <script type="text/javascript">
     RED.nodes.registerType('ds18b20',{
-        category: "output",
+        category: "input",
         color: "#C7E9C0",
         defaults: {
             name: {value:""},
-            sensorid: {value:"", required:true}
+            sensorid: {value:"", required:true},
+            timer: {value:"1", required:true, validate:RED.validators.number()}
         },
-        inputs: 1,
+        inputs: 0,
         outputs: 1,
         icon: "temp.png",
         label: function() {
@@ -27,7 +28,10 @@
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
-
+    <div class="form-row">
+        <label for="node-input-timer"><i class="fa fa-repeat"></i> Interval (min)</label>
+        <input type="text" id="node-input-timer" placeholder="1">
+    </div>
     <div class="form-row">
         <label for="node-input-sensorid">
             <i class="fa fa-ellipsis-v"></i> Sensor ID
