@@ -9,8 +9,6 @@ module.exports = function(RED) {
         this.timer = config.timer * 1000 * 60;
         var node = this;
 
-        // BUG/TODO selected sensor id not focused when editing a node
-
         var readSensor = function() {
             //node.log("reading a sensor with id=" + node.sensorid);
             // TODO error handling

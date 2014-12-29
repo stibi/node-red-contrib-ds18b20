@@ -17,9 +17,12 @@
             return this.name ? "node_label_italic" : "";
         },
         oneditprepare: function() {
+            var configuredSensorId = this.sensorid;
             $.getJSON('/sensors/1wire/',function(data) {
                 $.each(data, function( index, value ) {
-                    $("#node-input-sensorid").append(new Option(value, value));
+                    var isSelected = configuredSensorId === value;
+                    $("#node-input-sensorid").append(
+                        new Option(value, value, isSelected, isSelected));
                 });
             });
         }
