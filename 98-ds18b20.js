@@ -12,7 +12,7 @@ module.exports = function(RED) {
         // BUG/TODO selected sensor id not focused when editing a node
 
         var readSensor = function() {
-            node.log("reading a sensor with id=" + node.sensorid);
+            //node.log("reading a sensor with id=" + node.sensorid);
             // TODO error handling
             sense.temperature(node.sensorid, function(err, value) {
                 //var tempReading = {reading: value, where: node.name};

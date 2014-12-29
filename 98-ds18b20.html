@@ -1,6 +1,6 @@
 <script type="text/javascript">
     RED.nodes.registerType('ds18b20',{
-        category: "input",
+        category: 'Raspberry Pi',
         color: "#C7E9C0",
         defaults: {
             name: {value:""},
@@ -11,7 +11,10 @@
         outputs: 1,
         icon: "temp.png",
         label: function() {
-            return "DS18B20 " + this.name || "ds18b20";
+            return this.name || this.sensorid || "ds18b20";
+        },
+        labelStyle: function() {
+            return this.name ? "node_label_italic" : "";
         },
         oneditprepare: function() {
             $.getJSON('/sensors/1wire/',function(data) {
@@ -25,19 +28,19 @@
 
 <script type="text/x-red" data-template-name="ds18b20">
     <div class="form-row">
-        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
-    </div>
-    <div class="form-row">
-        <label for="node-input-timer"><i class="fa fa-repeat"></i> Interval (min)</label>
-        <input type="text" id="node-input-timer" placeholder="1">
-    </div>
-    <div class="form-row">
         <label for="node-input-sensorid">
             <i class="fa fa-ellipsis-v"></i> Sensor ID
         </label>
         <select type="text" id="node-input-sensorid">
         </select>
+    </div>
+        <div class="form-row">
+        <label for="node-input-timer"><i class="fa fa-repeat"></i> Interval (min)</label>
+        <input type="text" id="node-input-timer" placeholder="1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name/topic</label>
+        <input type="text" id="node-input-name" placeholder="Name">
     </div>
 </script>
 
