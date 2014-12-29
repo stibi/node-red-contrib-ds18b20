@@ -13,8 +13,7 @@ module.exports = function(RED) {
             //node.log("reading a sensor with id=" + node.sensorid);
             // TODO error handling
             sense.temperature(node.sensorid, function(err, value) {
-                //var tempReading = {reading: value, where: node.name};
-                var msg = { payload: value, topic: node.name };
+                var msg = { payload: value };
                 node.send(msg);
             });
         }
