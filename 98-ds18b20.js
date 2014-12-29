@@ -15,5 +15,16 @@ module.exports = function(RED) {
             });
         });
     }
+
     RED.nodes.registerType("ds18b20", DS18B20Node);
+
+    RED.httpAdmin.get('/sensors/1wire',function(req,res) {
+        // TODO how to handle this credential thing?
+        //var credentials = RED.nodes.getCredentials(req.params.id);
+        //if (credentials) {
+        sense.sensors(function(err, ids) {
+            // TODO error handling
+            res.send(JSON.stringify(ids));
+        });
+    });
 }
