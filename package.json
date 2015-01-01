@@ -3,7 +3,7 @@
     "version"      : "0.0.2",
     "description"  : "A Node-RED node to read a temperature from a DS18B20 sensor",
     "dependencies": {
-        "ds18b20"   : "0.0.1"
+        "ds18b20"   : "0.0.2"
     },
     "repository" : {
         "type":"git",
