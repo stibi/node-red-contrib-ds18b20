@@ -1,6 +1,6 @@
 {
     "name"         : "node-red-contrib-ds18b20",
-    "version"      : "0.0.2",
+    "version"      : "0.0.3",
     "description"  : "A Node-RED node to read a temperature from a DS18B20 sensor",
     "dependencies": {
         "ds18b20"   : "0.0.2"
