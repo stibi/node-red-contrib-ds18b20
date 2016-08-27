@@ -14,6 +14,8 @@ module.exports = function(RED) {
             // TODO error handling
             sense.temperature(node.sensorid, function(err, value) {
                 var msg = { payload: value };
+                msg.sensorid = node.sensorid;
+                msg.topic = node.name;
                 node.send(msg);
             });
         }
