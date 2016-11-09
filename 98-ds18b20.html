@@ -18,7 +18,7 @@
         },
         oneditprepare: function() {
             var configuredSensorId = this.sensorid;
-            $.getJSON('/sensors/1wire/',function(data) {
+            $.getJSON('sensors/1wire/',function(data) {
                 $.each(data, function( index, value ) {
                     var isSelected = configuredSensorId === value;
                     $("#node-input-sensorid").append(
