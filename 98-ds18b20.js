@@ -5,6 +5,7 @@ module.exports = function(RED) {
     function DS18B20Node(config) {
         RED.nodes.createNode(this, config);
         this.sensorid = config.sensorid;
+        this.repeat = config.repeat;
         // user input is in minutes, this is conversion to miliseconds
         this.timer = config.timer * 1000 * 60;
         var node = this;
@@ -18,11 +19,15 @@ module.exports = function(RED) {
             });
         }
 
-        node.tout = setInterval(readSensor, node.timer);
-
         this.on("close", function() {
             clearInterval(this.tout);
         });
+
+        if (node.repeat)
+          node.tout = setInterval(readSensor, node.timer);
+
+        this.on('input', readSensor);
+
     }
 
     RED.nodes.registerType("ds18b20", DS18B20Node);

@@ -5,9 +5,10 @@
         defaults: {
             name: {value:""},
             sensorid: {value:"", required:true},
-            timer: {value:"1", required:true, validate:RED.validators.number()}
+            timer: {value:"1", required:true, validate:RED.validators.number()},
+            repeat: {value: false}
         },
-        inputs: 0,
+        inputs: 1,
         outputs: 1,
         icon: "thermometer.png",
         label: function() {
@@ -37,7 +38,11 @@
         <select type="text" id="node-input-sensorid">
         </select>
     </div>
-        <div class="form-row">
+    <div class="form-row">
+      <label for="node-input-name"><i class="icon-ok"></i>Allow sensing interval/repetion</label>
+      <input type="checkbox" id="node-input-repeat">
+      </div>
+    <div class="form-row">
         <label for="node-input-timer"><i class="fa fa-repeat"></i> Interval (min)</label>
         <input type="text" id="node-input-timer" placeholder="1">
     </div>
